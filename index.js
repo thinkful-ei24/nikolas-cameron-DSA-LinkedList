@@ -26,8 +26,8 @@ SLL.insertFirst('Apollo');
 SLL.insertLast('Boomer');
 SLL.insertLast('Helo');
 SLL.insertLast('Husker');
-SLL.insertLast('Starbuck');
-SLL.insertLast('Tauhida');
+// SLL.insertLast('Starbuck');
+// SLL.insertLast('Tauhida');
 
 // console.log(SLL);
 
@@ -65,8 +65,8 @@ function isEmpty(LinkedList) {
   }
 }
 
-console.log(size(SLL));
-console.log(isEmpty(SLL));
+// console.log(size(SLL));
+// console.log(isEmpty(SLL));
 
 function findPrevious(LinkedList, value) {
   let currentNode = LinkedList.head;
@@ -102,5 +102,76 @@ function findLast(LinkedList) {
   }
 }
 
-console.log(findPrevious(SLL, 'Boomer'));
-console.log(findLast(SLL));
+// console.log(findPrevious(SLL, 'Boomer'));
+// console.log(findLast(SLL));
+
+function reverseList(sll){
+  // for head, next should go to null
+  // make the end the head
+  // previous and current, current.next = previous
+  // nextNode = currentNode.next 
+  // current.next = previous
+  // previous = 
+
+  let currentNode = sll.head;
+  let previousNode = null;
+  if(!sll.head){
+    return null;
+  }else if(sll.head.next === null){
+    return sll;
+  }else{
+    
+    while(currentNode !== null){
+      let nextNode = currentNode.next;
+      currentNode.next = previousNode;
+      previousNode = currentNode;
+      currentNode = nextNode;
+    }
+    sll.head = previousNode;
+    return sll;
+
+  }
+}
+
+
+function thirdFromEnd(sll){
+  if(sll.head === null){
+    return null;
+  }
+  if(sll.head.next === null){
+    return;
+  }
+  if(sll.head.next.next === null){
+    return null;
+  }
+  let currentNode = sll.head;
+  while (currentNode.next.next.next !== null){
+    currentNode = currentNode.next;
+  }
+  return currentNode;
+}
+
+function middleOfList(sll){
+  let size = size(sll);
+  let counter = 1;
+  let index;
+  if(size === 0){
+    return null;
+  }
+  if(size === 1){
+    return null;
+  }
+  if(size % 2 === 1){
+    index = Math.ceil(size/2);
+  }else{
+    index = size/2;
+  }
+  let currentNode = sll.head;
+  while (counter < index){
+    currentNode = currentNode.next;
+    counter ++;
+  }
+  return currentNode;
+}
+
+
