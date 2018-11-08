@@ -106,23 +106,22 @@ function findLast(LinkedList) {
 // console.log(findPrevious(SLL, 'Boomer'));
 // console.log(findLast(SLL));
 
-function reverseList(sll){
+function reverseList(sll) {
   // for head, next should go to null
   // make the end the head
   // previous and current, current.next = previous
-  // nextNode = currentNode.next 
+  // nextNode = currentNode.next
   // current.next = previous
-  // previous = 
+  // previous =
 
   let currentNode = sll.head;
   let previousNode = null;
-  if(!sll.head){
+  if (!sll.head) {
     return null;
-  }else if(sll.head.next === null){
+  } else if (sll.head.next === null) {
     return sll;
-  }else{
-    
-    while(currentNode !== null){
+  } else {
+    while (currentNode !== null) {
       let nextNode = currentNode.next;
       currentNode.next = previousNode;
       previousNode = currentNode;
@@ -130,59 +129,57 @@ function reverseList(sll){
     }
     sll.head = previousNode;
     return sll;
-
   }
 }
 
-
-function thirdFromEnd(sll){
-  if(sll.head === null){
+function thirdFromEnd(sll) {
+  if (sll.head === null) {
     return null;
   }
-  if(sll.head.next === null){
+  if (sll.head.next === null) {
     return;
   }
-  if(sll.head.next.next === null){
+  if (sll.head.next.next === null) {
     return null;
   }
   let currentNode = sll.head;
-  while (currentNode.next.next.next !== null){
+  while (currentNode.next.next.next !== null) {
     currentNode = currentNode.next;
   }
   return currentNode;
 }
 
-function middleOfList(sll){
+function middleOfList(sll) {
   let size = size(sll);
   let counter = 1;
   let index;
-  if(size === 0){
+  if (size === 0) {
     return null;
   }
-  if(size === 1){
+  if (size === 1) {
     return null;
   }
-  if(size % 2 === 1){
-    index = Math.ceil(size/2);
-  }else{
-    index = size/2;
+  if (size % 2 === 1) {
+    index = Math.ceil(size / 2);
+  } else {
+    index = size / 2;
   }
   let currentNode = sll.head;
-  while (counter < index){
+  while (counter < index) {
     currentNode = currentNode.next;
-    counter ++;
+    counter++;
   }
   return currentNode;
 }
 
-function cycle(sll){
+function cycle(sll) {
   const copy = Object.assign({}, sll);
-  if(sll.head === null){
+  if (sll.head === null) {
     return false;
   }
   let currentNode = sll.head;
-  while(currentNode.next !== null){
-    if(currentNode.cycle){
+  while (currentNode.next !== null) {
+    if (currentNode.cycle) {
       return true;
     }
     currentNode.cycle = true;
@@ -190,9 +187,3 @@ function cycle(sll){
   }
   return false;
 }
-
-
-
-
-
-
