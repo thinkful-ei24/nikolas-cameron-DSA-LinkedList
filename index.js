@@ -26,6 +26,7 @@ SLL.insertFirst('Apollo');
 SLL.insertLast('Boomer');
 SLL.insertLast('Helo');
 SLL.insertLast('Husker');
+// SLL.find('Helo').next = SLL.find('Boomer');
 // SLL.insertLast('Starbuck');
 // SLL.insertLast('Tauhida');
 
@@ -173,5 +174,25 @@ function middleOfList(sll){
   }
   return currentNode;
 }
+
+function cycle(sll){
+  const copy = Object.assign({}, sll);
+  if(sll.head === null){
+    return false;
+  }
+  let currentNode = sll.head;
+  while(currentNode.next !== null){
+    if(currentNode.cycle){
+      return true;
+    }
+    currentNode.cycle = true;
+    currentNode = currentNode.next;
+  }
+  return false;
+}
+
+
+
+
 
 
