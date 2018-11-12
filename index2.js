@@ -26,23 +26,19 @@ function reverseDLL(SLL) {
     return null;
   }
   let currentNode = SLL.head;
+  let nextNode;
   while (currentNode !== null) {
-    let nextNode = currentNode;
+    nextNode = currentNode.next;
     currentNode.next = currentNode.previous;
-    currentNode.previous = nextNode.next;
-    currentNode = nextNode.next;
+    currentNode.previous = nextNode;
+    currentNode = nextNode;
   }
-  let tail = SLL.tail.value;
-  let head = SLL.head.value;
-  console.log(SLL.tail, SLL.head);
-  let previous = Object.assign({}, SLL.tail.previous);
-  let next = SLL.head.next;
-  SLL.tail.value = head;
-  SLL.head.value = tail;
-  SLL.tail.previous = next;
-  SLL.head.next = previous;
-
+  nextNode = SLL.head;
+  SLL.head = SLL.tail;
+  SLL.tail = nextNode;
   return SLL;
 }
 
+// reverseDLL(SLL);
 console.log(reverseDLL(SLL));
+
